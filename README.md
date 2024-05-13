@@ -1,4 +1,4 @@
-Subterfuge
+Subterfuge -
 This project was created as a supplement to my Year 3 Development project. Godot version 4.2.1 must be installed in order for the project to be launched
 
 Controls
