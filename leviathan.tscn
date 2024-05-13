@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://cciwu4pq0hmea"]
+
+[ext_resource type="Texture2D" uid="uid://2xcuvivq45kw" path="res://textures/textures/CompressJPEG.online_512x512_image.png" id="1_vcoth"]
+[ext_resource type="Texture2D" uid="uid://cd2apinn7sc03" path="res://textures/textures/DisplacementMap.png" id="2_obaj0"]
+[ext_resource type="Texture2D" uid="uid://cyio4sebwm3by" path="res://textures/textures/NormalMap.png" id="3_yjay7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04gty"]
+albedo_texture = ExtResource("1_vcoth")
+metallic = 1.0
+metallic_texture = ExtResource("2_obaj0")
+normal_enabled = true
+normal_texture = ExtResource("3_yjay7")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_6ys5g"]
+
+[sub_resource type="Animation" id="Animation_ei5b2"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v8l2t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rwl86"]
+_data = {
+"RESET": SubResource("Animation_v8l2t"),
+"spin": SubResource("Animation_ei5b2")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61366, 0)
+material_override = SubResource("StandardMaterial3D_04gty")
+mesh = SubResource("TubeTrailMesh_6ys5g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rwl86")
+}
+autoplay = "spin"

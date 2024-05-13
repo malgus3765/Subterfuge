@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cwgs6vpjmdlfi"
+path="res://.godot/imported/StunBaton.obj-aaae1cf8854bae71649903487325dacb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/StunBaton.obj-aaae1cf8854bae71649903487325dacb.mesh"]
+
+source_file="res://StunBaton.obj"
+dest_files=["res://.godot/imported/StunBaton.obj-aaae1cf8854bae71649903487325dacb.mesh", "res://.godot/imported/StunBaton.obj-aaae1cf8854bae71649903487325dacb.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
